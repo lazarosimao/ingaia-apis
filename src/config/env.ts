@@ -1,3 +1,7 @@
 import { config } from 'dotenv';
 
-config({ path: "./.env" });
+if (process.env.NODE_ENV == 'test') {
+  config({ path: "./.env.test" });
+} else {
+  config({ path: "./.env" });
+}
