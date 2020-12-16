@@ -1,9 +1,7 @@
-import { MongoClient } from 'mongodb'
+import { Collection, MongoClient } from 'mongodb'
 
 class Connection {
   private mongoClient: MongoClient;
-
-  constructor() {}
 
   async initConnection(uri: string): Promise<void> {
 		this.mongoClient = await MongoClient.connect(uri, {
@@ -16,7 +14,11 @@ class Connection {
 		await this.mongoClient.close();
   }
 
-  async getConnection(): MongoClient {
+  getCollection(name: string): Collection {
+		return this.mongoClient.db().collection(name)
+  }
+  
+  getConnection(): MongoClient {
     return this.mongoClient;
   }
   
