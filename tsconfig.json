@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "es5",     
+    "module": "commonjs",
+    "allowJs": true,  
+    "strict": false,
+    "esModuleInterop": true,                  
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "types": [
+      "@types/jest", 
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+        "@src/*": ["src/*"],
+        "@tests/*": ["./tests/*"]
+    },
+    "rootDirs": [
+        "src",
+        "./tests"
+    ],
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/*.ts",
+    "./tests/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "test.ts",
+    "**/*.spec.ts"
+  ],
+  "buildOnSave": true,
+  "compileOnSave": true
+}

@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  mongo:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/db:/data/db
+  mongo-seed:
+    container_name: mongodb_seed
+    build: ./mongodb
+    links:
+      - mongo
+  mongo-express:
+    container_name: mongodb_express
+    image: mongo-express
+    restart: always
+    ports:
+    - "8081:8081"
