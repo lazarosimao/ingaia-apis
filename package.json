@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "start": "NODE_ENV=production yarn build && node dist/src/index.js",
-    "start:dev": "NODE_ENV=development npx nodemon --exec ts-node src/index.ts",
+    "start:dev": "NODE_ENV=local npx nodemon --exec ts-node src/index.ts",
+    "start:prod:local": "NODE_ENV=production-local npx nodemon --exec ts-node src/index.ts",
     "lint": "eslint ./src ./tests --ext .ts",
     "lint:fix": "eslint ./src ./tests --ext .ts --fix",
     "test": "NODE_ENV=test jest"

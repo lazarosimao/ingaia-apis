@@ -38,7 +38,7 @@ describe('Test Unit', () => {
 
     it('should return success', async () => {
       const data = { m2: 36 };
-      const expectedData = {"m2": 36, "propertyPrice": 2844, "valueM2": 79};
+      const expectedData = {"m2": 36, "propertyPrice": 1404, "valueM2": 39};
       const result = await propertyValueUseCase.execute(data);
       expect(result).toEqual(expectedData);
     });

@@ -11,4 +11,4 @@ RUN yarn install
 
 EXPOSE 3333
 
-ENTRYPOINT ["yarn", "start:dev"]
+ENTRYPOINT ["yarn", "start"]
