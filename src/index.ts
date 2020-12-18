@@ -9,9 +9,9 @@ import Connection from './usefulness/Connection';
 
 const server = http.createServer(Api);
 
-server.listen(process.env.SERVER_PORT);
+server.listen(process.env.PORT);
 server.on('listening', async () => {
-  Logger.info(`🚀️ ${process.env.SERVER_HOST}:${process.env.SERVER_PORT} started`);
+  Logger.info(`🚀️ ${process.env.SERVER_HOST}:${process.env.PORT} started`);
   try {
     await Connection.initConnection(`${process.env.MONGO_URL}`);
     Logger.info(`🚀️ database started`);

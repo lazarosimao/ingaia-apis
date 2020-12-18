@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/src/index.js",
+    "start": "NODE_ENV=production yarn build && node dist/src/index.js",
     "start:dev": "NODE_ENV=development npx nodemon --exec ts-node src/index.ts",
     "lint": "eslint ./src ./tests --ext .ts",
     "lint:fix": "eslint ./src ./tests --ext .ts --fix",
