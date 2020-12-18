@@ -9,10 +9,17 @@ module.exports = {
   preset: '@shelf/jest-mongodb',
   maxConcurrency: 1,
   collectCoverage: true,
-  collectCoverageFrom: [
-    '@src/**',
-  ],
-  coverageDirectory: "coverage",
+  coverageReporters: ["json", "html"],
+  collectCoverage: true,
+  coverageReporters: ["text","html", "json"],
+  coverageDirectory: "<rootDir>/coverage/",
+    collectCoverageFrom: [
+      "**/app_modules/**",
+      "**/src/**",
+      "!**/dist/**",
+      "!**src/config/**"
+
+  ],  
   testEnvironment: "node",
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',

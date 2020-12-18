@@ -1,6 +1,8 @@
 import '@src/config/env';
 import { SquareMeterRepository } from "@src/repositories/implementions/SquareMeterRepository";
+import { squareMeterValueUseCase } from '@src/useCases/SquareMeterValue';
 import Connection from "@src/usefulness/Connection";
+import { HandleErrors } from '@src/usefulness/HandleErrors';
 
 describe('Test Unit', () => {
 
@@ -21,8 +23,8 @@ describe('Test Unit', () => {
       await Connection.getConnection().db().createCollection("test_api");
     }
     
-    const mock = { _id: '5fda239cd849a6e46a36756e', value_m2: 234 };
-    await Connection.getCollection(`test_api`).insertOne(mock);
+      const mock = { _id: '5fda239cd849a6e46a36756e', value_m2: 234 };
+      await Connection.getCollection(`test_api`).insertOne(mock);
   });
 
   afterAll(async () => {
@@ -36,6 +38,26 @@ describe('Test Unit', () => {
       const result = await repository.getValue();
       expect(result).toEqual(234);
     });
+  });
+
+  describe('UseCase', () => { 
+    it('should return success', async () => {
+      const expectedData = 234;
+      const result = await squareMeterValueUseCase.execute();
+      expect(result).toEqual(expectedData);
+    });
+
+    it('should fail value not found in the database', async () => {
+      await Connection.getCollection(`test_api`).update({ _id: "5fda239cd849a6e46a36756e" }, { $set: {
+        value_m2: ""} });
+      
+      await expect(squareMeterValueUseCase.execute())
+        .rejects.toEqual(new HandleErrors(400, 'value not found in the database'));
+      
+      await Connection.getCollection(`test_api`).update({ _id: "5fda239cd849a6e46a36756e" }, { $set: {
+        value_m2: 234} });
+    });
+
   });
 
 });
