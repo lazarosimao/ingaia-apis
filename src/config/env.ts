@@ -5,7 +5,11 @@ switch(process.env.NODE_ENV ) {
     config({ path: "./.env.test" });
     break;
 
-  case "development":
-    config({ path: "./.env.development" });
+  case "local":
+    config({ path: "./.env.local" });
+    break;
+
+  case "production-local":
+    config({ path: "./.env" });
     break;
 }

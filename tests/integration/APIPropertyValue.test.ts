@@ -18,7 +18,7 @@ describe('Test Integration', () => {
     });
 
     it('Should return response success', async (done) => {
-      const expectedData = "{\"statusCode\":200,\"message\":\"ok\",\"payload\":{\"m2\":36,\"valueM2\":79,\"propertyPrice\":2844}}";
+      const expectedData = "{\"statusCode\":200,\"message\":\"ok\",\"payload\":{\"m2\":36,\"valueM2\":39,\"propertyPrice\":1404}}";
       request(app)
         .post('/api/v1/property-value')
         .send({ m2: m2})
